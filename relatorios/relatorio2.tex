@@ -1,0 +1,128 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+%opening
+\title{Report 2 \textendash\ AEDs III}
+\author{Willian S. Soares - 2014.1.08.034}
+\date{March 9, 2020}
+\begin{document}
+\pagenumbering{gobble}
+
+\maketitle
+\section{Graphs History}
+Essentially, graphs history started with Leonhard Euler. Leonhard was a young mathematician that solved the infinite series of inverse squares sum on 1735, also known as the Basel problem. A year later, Euler solves the problem known as Seven Bridges of Königsberg. It was the first application to graphs.
+
+The problem itself can't be solved: it doesn't exists a path that enables a person to walk through all the bridges without repeating a bridge. But it could only be demonstrated by the implementations of graphs. After this episode, Euler's discovery was overlooked and the science community gave the deserved attention to it only after 150 years.
+
+Many science areas implemented graphs in some way. Chemistry, engineering, computer science and many others.
+
+\section{Basic Concepts}
+The second lecture talks about the basic concepts in graphs, showing the notation and some taxidermy of it.
+
+Graphs are made of Vertices and Edges. In the lectures, Vertices are notated by "set of V" and Edges by "set of A". A graph is described by:
+$ G = (V,A) $
+
+\subsection*{Taxidermy of graphs}
+\paragraph*{Non-Oriented Graph}
+For any set $V$, we call $W$ the set of all non-ordinate pairs of elements of $V$:
+
+$V = \{a,b,c\}$
+
+$W = \{(a,b),(a,c),(b,c)\}$
+
+Basically, in any simple graph, $ A \subseteq W $.
+
+Still, the set of edges does not have any information about orientation.
+\subparagraph*{Simple Graph}
+A type of \emph{Non-Oriented} graph, but with special rules.
+A simple graph cannot contain:
+\begin{enumerate}
+\item \emph{parallel edges}: $ \{(a,b),(b,a)\} $
+\item \emph{loop edges}: $\{(a,a)\}$
+\end{enumerate}
+
+\paragraph*{Simple Oriented Graph}
+For any set $V$, we call $W$ the set of all ordinate pairs of elements of $V$:
+
+$V = \{a,b,c\}$
+
+$W = \{(a,b),(b,a),(a,c),(c,a),(b,c),(c,b)\}$
+
+Basically, in any simple oriented graph, $ A \subseteq W $.
+
+\paragraph*{Valued Graph}
+A graph that contains information of value in it's edges is called a \emph{Valued Graph}. The Valued Graphs can be \emph{Oriented} or \emph{Non-Oriented}.
+For any set $V$, we call $W$ the set of all pairs of elements of $V$:
+
+$V = \{a,b,c\}$
+
+$W = \{(a,b, 10),(a,c, 30),(b,c, 20)\}$
+
+\section{Object Orienting}
+Next, a simple implementation of a bubble-sort algorithm. 
+
+\begin{lstlisting}
+// BubbleSort.java
+public static void main(String[] args) {
+    int[] array = new int[] { 7, 6, 5, 4, 3, 2, 1 };
+    System.out.println("Un-ordered array: ");
+    printArray(array);
+    bubbleSort(array);
+    System.out.println("Ordered array: ");
+    printArray(array);
+}
+public static void bubbleSort(int[] array) {
+    for (int i = 0; i < array.length; i++) {
+        for (int j = 0; j < array.length - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                int aux = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = aux;
+            }
+        }
+    }
+}
+public static void printArray(int[] array) {
+    System.out.print("[");
+    for (int i = 0; i < array.length; i++) {
+        System.out.print(array[i]);
+        if (i != array.length - 1)
+            System.out.print(", ");
+        else
+            System.out.println("]");
+    }
+}
+\end{lstlisting}
+\begin{verbatim}
+Un-ordered array: 
+[7, 6, 5, 4, 3, 2, 1]
+Ordered array: 
+[1, 2, 3, 4, 5, 6, 7]
+\end{verbatim}
+
+\end{document}
+
