@@ -1,0 +1,101 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\author{Willian de Souza Soares \textendash\ 2014.1.08.034}
+\title{Report 3 \textendash\ AEDs III}
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\begin{abstract}
+Some of the computational representations that can be used on graphs, including \emph{Adjacency Matrix}, \emph{Incidence Matrix} and \emph{Adjacency List}.
+\end{abstract}
+\section{Adjacency Matrix}
+Adjacency: $a$ is \textbf{adjacent} to $b$ if $a$ is connected to $b$.
+
+An adjacency matrix is represented by a square matrix, having $n$ elements, $n \times n$ is the number of Vertices on a graph $G$.
+
+$G=(V,E)$
+
+$V = {a,b,c}$
+
+$E = {(a,b), (a,c), (b,c), (c,a), (c,b)}$
+
+$G$:
+$
+\begin{tabular}{l|lll}
+           & \textbf{a} & \textbf{b} & \textbf{c} \\ \hline
+\textbf{a} &            & 1          & 1          \\
+\textbf{b} &            &            & 1          \\
+\textbf{c} & 1          & 1          &           
+\end{tabular}
+$
+
+\begin{list}{$ \bullet $}{Advantages:}
+\item $\theta (1) $ for access;
+\item Efficient when dealing with a complete graph.
+\end{list}
+\begin{list}{$ \bullet $}{Disadvantages:}
+\item $\theta (V^{2}) $ for memory usage;
+\item Can be under-used and be made mostly of empty spaces, when dealing with a sparse graph;
+\item Cannot represent valued \textbf{and} parallel edges at the same time.
+\end{list}
+\newpage
+\section{Incidence Matrix}
+Given a graph $G=(V,E)$, the incidence matrix of $G$ has the size $|V| \times |E|$.
+
+$G=(V,E)$
+
+$V = {a,b,c}$
+
+$E = {(a,b), (a,c), (b,c), (c,a), (c,b)}$
+
+$G$:
+$
+\begin{tabular}{l|lllll}
+           & \textbf{e0} & \textbf{e1} & \textbf{e2} & \textbf{e3} & \textbf{e4} \\ \hline
+\textbf{a} & 1           & 1           &             & 1           &             \\
+\textbf{b} & 1           &             & 1           &             & 1           \\
+\textbf{c} &             & 1           & 1           & 1           & 1          
+\end{tabular}
+$
+
+\begin{list}{$ \bullet $}{Advantages:}
+\item $\theta (E) $ for access. Can be a disadvantage when dealing with too many edges;
+\item Efficient when dealing with sparse graphs
+\end{list}
+\begin{list}{$ \bullet $}{Disadvantages:}
+\item $\theta (V \times E) $ for memory usage: uses too many space when dealing with graphs with many Edges;
+\end{list}
+
+
+\section{Adjacency List}
+Given a graph $G=(V,E)$, the graph $G$ is represented by an array $a_{v}$ of linked lists.
+Each of these linked lists represents an edge $e$ adjacent to $v$.
+
+$G=(V,E)$
+
+$V = {a,b,c}$
+
+$E = {(a,b), (a,c), (b,c), (c,a), (c,b)}$
+
+$G$:
+$
+\begin{array}{ccccc}
+a & \rightarrow & b & c & // \\ 
+b & \rightarrow  & c & // &  \\ 
+c & \rightarrow  & a & b & //
+\end{array}
+$
+
+\begin{list}{$ \bullet $}{Advantages:}
+\item Uses the lowest memory than the another options, $ \theta (V + E) $
+\end{list}
+\begin{list}{$ \bullet $}{Disadvantages:}
+\item Slow for access and operations with edges, $\theta (E) $
+\end{list}
+
+\end{document}
